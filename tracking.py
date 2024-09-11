@@ -9,7 +9,7 @@ Created on Mon Aug 12 21:20:58 2024
 import sys
 import platform
 import argparse
-from pyfirmata import Arduino, SERVO
+from pyfirmata2 import Arduino, SERVO
 from PyQt5.QtSerialPort import QSerialPortInfo
 from PyQt5 import QtWidgets, uic
 
@@ -17,8 +17,8 @@ class BoardController(Arduino):
 	def __init__(self, *args, **kwargs):
 		args = list(args)
 		if "Mac" or "Darwin" in platform.system():
-			#pass
 			args[0] = f"/dev/{args[0]}" #port = '/dev/tty.usbmodem11401'# Mac
+			#pass
 		elif "Linux" in platform.system():
 			args[0] = f"/dev/{args[0]}" #port = '/dev/ttyACM3' # Linux
 			#pass
